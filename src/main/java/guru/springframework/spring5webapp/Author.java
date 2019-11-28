@@ -1,0 +1,42 @@
+package guru.springframework.spring5webapp;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+public class Author {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO) 
+	private Long id;
+	
+
+	private String firstName;
+	private String lastName;
+	
+	@ManyToMany
+	private Set<Book> books = new HashSet<>();
+	
+	public Author() {	
+	}
+	
+	public Author(String firstName, String lastName, Set<Book> books) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.books = books;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
+	
+}
